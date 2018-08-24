@@ -8,8 +8,8 @@ const STORE = [
 ];
 
 function generateHtml(item, index) {
-  let checkedStyle = item.checked ? '.shopping - item__checked' : '';
-  return `<li class="js-item-index-element"
+    let checkedStyle = item.checked ? 'shopping-item__checked' : '';
+    return `<li class="js-item-index-element"
         data-item-index="${index}">
         <span class="shopping-item ${checkedStyle}">${item.name}</span>
         <div class="shopping-item-controls">
@@ -31,7 +31,11 @@ function renderHtml(){
 function checkToggle(){
 	$('.js-shopping-list').on('click', '.shopping-item-toggle', function(event){
 		const index = $(this).parents('.js-item-index-element').attr('data-item-index');
-		console.log(index);
+        console.log(index);
+        console.log(STORE[index]);
+        STORE[index].checked = !STORE[index].checked;
+        console.log(STORE[index].checked);
+        renderHtml();
 	})
 }
 
