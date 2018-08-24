@@ -39,6 +39,13 @@ function checkToggle(){
 	})
 }
 
+function checkDelete() {
+  	$('.js-shopping-list').on('click', '.shopping-item-delete', function (event) {
+  	  const index = $(this).parents('.js-item-index-element').attr('data-item-index');
+  	  STORE.splice(index, 1);
+  	  renderHtml();
+  	});
+}
 
 function itemAddHandler() {
   $('#js-shopping-list-form').submit(function (event) {
@@ -55,7 +62,8 @@ function itemAddHandler() {
 function main() {
 	itemAddHandler();
 	renderHtml();
-	checkToggle();
+  checkToggle();
+  checkDelete();
 }
 
 $(main);
